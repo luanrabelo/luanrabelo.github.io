@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,401 +14,151 @@
         * {
             font-family: "Montserrat", sans-serif;
         }
-        .image-container {
-            overflow: hidden;
-        }
-
-        .image-container img:hover {
-            transform: scale(0.95);
-            transition: transform 0.5s;
-        }
-
         .masonry {
-            column-count: 3;
-            column-gap: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
         }
-
         .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 2rem;
+            width: calc(25% - 1.5rem); /* 4 items per row */
+            position: relative;
+            margin-bottom: 0.25rem; /* Espaçamento maior entre as imagens */
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: white; /* Fundo branco para todas as imagens */
+            border: 1.5px solid #000000; /* Borda cinza */
         }
-
+        .masonry-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 10s linear;
+        }
+        .masonry-item:hover img {
+            transform: translateY(-10%);
+        }
         .full-screen-image {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
         }
-
         .full-screen-image img {
             max-width: 90%;
             max-height: 90%;
         }
-
         .full-screen-image .close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 30px;
-            cursor: pointer;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
             color: white;
+            cursor: pointer;
         }
-
-        .timeline-item {
-            padding: 10px;
-            border-radius: 10px;
-            background: #2d3748;
-            /* Cor de fundo para os itens da linha do tempo */
-            max-width: 350px;
-        }
-
-        .timeline-content {
-            max-width: 350px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 20px;
-        }
-
-        .timeline-image {
-            width: 40px;
-            height: 40px;
+        .loading-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid black;
             border-radius: 50%;
-            object-fit: cover;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
         }
-
-        .profile-card {
-            background: #2d3748;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .profile-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 10px;
-        }
-
-        @media (max-width: 768px) {
-            .masonry {
-                column-count: 1;
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
             }
         }
-
-        .iconLink > i {
-            text-decoration: none;
-            color: #000000;
+        .caption {
+            background: #4a5568; /* bg-gray-600 */
+            color: white;
+            padding: 0.5rem;
+            font-size: 0.875rem; /* text-sm */
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            left: 0;
         }
-        .iconLink:hover {
-            color: #202020;
-            transform: scale(1.25);
-            transition: transform 0.75s;
-
+        .tool-card {
+            width: calc(20% - 1.5rem); /* 5 items per row */
+            position: relative;
+            margin-bottom: 0.25rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: white;
+            border: 1.5px solid #000000;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .tool-card img {
+            width: 100%;
+            object-fit: scale-down;
+        }
+        .tool-card .tool-info {
+            padding: 1rem;
+            text-align: left;
+        }
+        .tool-card .tool-links {
+            padding: 0.5rem;
+        }
+        .tool-card .tool-links a {
+            display: inline-block;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .masonry-item, .tool-card {
+                width: calc(100% - 1.5rem); /* 1 item per row */
+            }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .masonry-item {
+                width: calc(33.33% - 1.5rem); /* 3 items per row */
+            }
+            .tool-card {
+                width: calc(33.33% - 1.5rem); /* 3 items per row */
+            }
         }
         hr {
-            border: 1px solid #20202050;
-            height: 1px;
+            border: 0.75px dashed #505050;
         }
     </style>
 </head>
+<body class="bg-gray-200 h-screen flex flex-col">
+   
 
-<body class="p-1 sm:p-2 mx-auto">
-
-    <div class="profile-card max-w-full mx-auto mb-10 bg-gray-400 rounded-lg shadow-2xl flex flex-col md:flex-row items-center md:items-start space-y-2 md:space-y-0 md:space-x-6">
-        <div class="flex flex-col md:flex-row items-center md:items-start md:space-y-0 md:space-x-6 w-full">
-            <img src="assets/Luan.png" alt="Profile Image" class="w-40 h-40 rounded-full border-4 border-black">
-            <div>
-                <h1 class="text-3xl font-bold mb-2 text-left text-black">Luan Rabelo</h1>
-                <p class="text-md mb-4 text-left text-black">Evolution | Bioinformatics | Data Scientist and Analyst | Scientific Design | Python - NGS - R - SQL - Shell - AWS - PHP - HTML - JavaScript</p>
-                <div class="flex flex-wrap space-x-5">
-                    <a href="https://github.com/luanrabelo/" target="_blank"><i class="iconLink fab fa-github fa-2x"></i></a>
-                    <a href="https://x.com/lprabelo/" target="_blank"><i class="iconLink fab fa-twitter fa-2x"></i></a>
-                    <a href="https://facebook.com/lprabelo/" target="_blank"><i class="iconLink fab fa-facebook fa-2x"></i></a>
-                    <a href="https://instagram.com/lprabelo/" target="_blank"><i class="iconLink fab fa-instagram fa-2x"></i></a>
-                    <a href="https://www.linkedin.com/in/lprabelo/" target="_blank"><i class="iconLink fab fa-linkedin fa-2x"></i></a>
-                    <a href="https://orcid.org/0000-0002-1223-8943" target="_blank"><i class="iconLink fab fa-orcid fa-2x"></i></a>
-                    <a href="mailto:luanrabelo@outlook.com" target="_blank"><i class="iconLink fas fa-envelope fa-2x"></i></a>
-                </div>
-                <div class="flex flex-wrap">
-                    <a class="btn bg-black text-white rounded-lg p-3 mt-2 hover:bg-gray-600 w-full sm:w-40 ml-1 mr-1" href="assets/CV_LuanRabelo.pdf" target="_blank">Download CV</a>
-                    <a class="btn bg-black text-white rounded-lg p-3 mt-2 hover:bg-gray-600 w-full sm:w-40 ml-1 mr-1" href="https://lattes.cnpq.br/9867825327586576" target="_blank">Lattes</a>
-                </div>
+    <main class="flex-1 overflow-auto p-4">
+        <section class="my-8">
+            <h2 class="text-5xl font-bold text-center mb-8">Portfólio de Figuras e Designs</h2>
+            <div id="image-gallery" class="masonry mx-auto"></div>
+            <div class="text-center my-4">
+                <button id="load-more" class="rounded-lg py-4 px-8 cursor-pointer text-xl text-center bg-gray-900 text-white font-bold hover:bg-gray-600 transition-colors duration-300">Ver Outras Imagens</button>
             </div>
-        </div>
-    
-        <div class="w-full bg-gray-600 rounded-b-lg overflow-hidden">
-            <div class="flex items-center justify-between py-2 px-2 md:px-6">
-                <div class="flex space-x-3">
-                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                </div>
-            </div>
-            <div id="terminal" class="w-full bg-black text-green-400 font-mono h-36 overflow-y-auto text-left px-2 py-2 text-xs"></div>
-        </div>
-    </div>
-    
-    <script>
-        $(document).ready(function () {
-            const terminal = document.getElementById('terminal');
-            const commands = [
-                'echo "Welcome to Luan\'s Profile Terminal"',
-                'ls -la',
-                'cd projects',
-                'git status',
-                'python3 script.py',
-                'top',
-                'exit',
-                'apt-get install python3-pip',
-                'pip3 install numpy pandas matplotlib seaborn',
-                'npm install -g @angular/cli',
-                'mv file.txt newfolder/',
-                'curl -O https://example.com/file.zip',
-                'chmod +x script.sh',
-                './script.sh',
-                'docker run -d --name mycontainer myimage',
-                'kubectl get pods',
-            ];
-    
-            function simulateTerminal() {
-                let commandIndex = 0;
-                const interval = setInterval(() => {
-                    const command = commands[commandIndex];
-                    const newCommand = document.createElement('div');
-                    newCommand.textContent = `$ ${command}`;
-                    terminal.appendChild(newCommand);
-                    const output = document.createElement('div');
-                    output.textContent = `Output of ${command}`;
-                    terminal.appendChild(output);
-                    terminal.scrollTop = terminal.scrollHeight;
-                    commandIndex = (commandIndex + 1) % commands.length;
-                    if (commandIndex === 0) {
-                        clearInterval(interval); // Stop simulation after completing all commands
-                    }
-                }, 2000);
-            }
-    
-            simulateTerminal();
-        });
-    </script>
+        </section>
 
-    <hr class="mt-2 mb-2" width="100%">
-
-    <div class="max-w mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 p-5">
-        <!-- Histórico de Publicações Acadêmicas -->
-        <div class="bg-gray-800 p-5 rounded-lg shadow-lg flex flex-col items-center text-white h-64">
-            <h2 class="text-2xl font-bold mb-4">Histórico de Publicações Acadêmicas</h2>
-            <p class="text-center mb-4">Explore a linha do tempo de todas as publicações acadêmicas realizadas por Luan
-                Rabelo.</p>
-            <a href="#timeline" class="text-white iconLink"><i class="fa-solid fa-link"></i> Veja Mais</a>
-        </div>
-
-        <!-- Ferramentas Disponíveis -->
-        <div class="bg-gray-800 p-5 rounded-lg shadow-lg flex flex-col items-center text-white h-64">
-            <h2 class="text-2xl font-bold mb-4">Ferramentas Disponíveis</h2>
-            <p class="text-center mb-4">Descubra as diversas ferramentas desenvolvidas e utilizadas por Luan Rabelo.</p>
-            <a href="#tools" class="text-white iconLink"><i class="fa-solid fa-link"></i> Veja Mais</a>
-        </div>
-
-        <!-- Portfólio de Figuras -->
-        <div class="bg-gray-800 p-5 rounded-lg shadow-lg flex flex-col items-center text-white h-64">
-            <h2 class="text-2xl font-bold mb-4">Portfólio de Figuras</h2>
-            <p class="text-center mb-4">Confira a coleção de figuras criadas por Luan Rabelo em seu portfólio.</p>
-            <a href="#portfolio" class="text-white iconLink"><i class="fa-solid fa-link"></i> Veja Mais</a>
-        </div>
-    </div>
-
-    <hr class="mt-2 mb-2" width="100%" size="1" color="#DDDDDD" align="center">
-
-
-    <h2 class="text-3xl font-bold text-center mb-10 p-5">Histórico de Publicações Acadêmicas</h2>
-    <h2 class="text-2xl font-bold text-center mb-5 p-1">Primeiro Autor</h2>
-    <div id="timeline-content" class="container mx-auto max-w mx-auto rounded-lg shadow-lg"></div>
-    <h2 class="text-2xl font-bold text-center mb-5 p-1">Colaborador</h2>
-    <div id="timelineColaborador" class="container mx-auto max-w mx-auto rounded-lg shadow-lg"></div>
-
-
-    <script>
-        $(document).ready(function () {
-            const publications = [
-                {
-                    time: "2024",
-                    title: "SynGenes: a Python class for standardizing nomenclatures of mitochondrial and chloroplast genes and a web form for enhancing searches for evolutionary analyses.",
-                    year: "2024",
-                    description: "A reconstrução da história evolutiva dos organismos foi revolucionada pelas técnicas moleculares, que aumentaram o uso de dados genômicos. No entanto, a falta de padronização na nomenclatura dos genes dificulta pesquisas em bancos de dados e análises evolutivas. Para resolver isso, foi desenvolvida uma classe Python chamada SynGenes, que padroniza nomes de genes, facilitando buscas precisas. A plataforma SynGenes também oferece um formulário web para buscas individuais e contém 545 variações de nomes de genes mitocondriais e 2485 de cloroplastos. A eficácia do SynGenes foi comprovada por pesquisas no GenBank e PubMedCentral, resultando em mais resultados do que buscas convencionais, garantindo dados mais abrangentes e precisos. Essa ferramenta é essencial para buscas precisas em bancos de dados e análises evolutivas, superando os desafios da nomenclatura de genes não padronizada.",
-                    link: "https://doi.org/10.1186/s12859-024-05781-y",
-                    author: {
-                        image: "assets/Luan.png",
-                        name: "Luan Rabelo",
-                        role: "Primeiro Autor"
-                    }
-                },
-                {
-                    time: "2022",
-                    title: "ForAlexa: an online tool for the rapid development of artificial intelligence skills for the teaching of evolutionary biology using Amazon’s Alexa.",
-                    year: "2022",
-                    description: "Assistentes Pessoais Inteligentes, como a Alexa da Amazon, são amplamente utilizados em uma variedade de tarefas, incluindo gestão pessoal e educação. Eles têm grande potencial para interações entre alunos e educadores à distância, destacado durante a pandemia de COVID-19. No entanto, esse potencial ainda é subutilizado. As aplicações da Alexa, conhecidas como habilidades, incluem comandos que ela pode executar. Para simplificar o desenvolvimento de novas habilidades, criamos uma ferramenta online chamada ForAlexa, que permite criar perguntas e respostas e aprimorar a interação com o usuário. ForAlexa possui dois tipos de formulários: Pergunta-e-Resposta (Q&A) e Citação-Aleatória. Ambos permitem construir intenções, que são atividades invocadas por um pedido verbal do usuário, com funções ligeiramente diferentes. O formulário Q&A compila respostas para as perguntas, enquanto o Citação-Aleatória expande a interação com o usuário. ForAlexa também oferece um assistente de ajuda e um manual explicativo. Essa ferramenta facilita para educadores o desenvolvimento rápido de aplicativos para suas aulas, podendo ser uma alternativa para estudantes com necessidades especiais, como deficientes visuais.",
-                    link: "https://doi.org/10.1186/s12052-022-00169-z",
-                    author: {
-                        image: "assets/Luan.png",
-                        name: "Luan Rabelo",
-                        role: "Primeiro Autor"
-                    }
-                },
-                // Outras publicações...
-            ];
-
-            const publicationsSegundo = [
-                {
-                    time: "2024",
-                    title: "First neurotranscriptome of adults Tambaquis (<i>Colossoma macropomum</i>) with characterization and differential expression between males and females.",
-                    year: "2024",
-                    description: "O Tambaqui, uma espécie icônica de peixe da Amazônia, é amplamente utilizado em pesca, aquicultura e como modelo de pesquisa. Ainda são necessários dados sobre o genoma funcional para avaliar parâmetros reprodutivos, nutricionais e resistência a patógenos. Utilizando sequenciamento de nova geração, este estudo gerou o primeiro transcriptoma do telencéfalo de machos e fêmeas adultos de Colossoma macropomum, criando um conjunto de dados de referência para estudos futuros. Foram identificados 896.238 transcritos, incluindo 267.785 contíguos e 203.790 genes. Desses, 91 transcritos foram diferencialmente expressos, com 63 regulados positivamente para fêmeas e 28 para machos. A anotação funcional revelou 40 genes candidatos para fêmeas e 20 para machos, envolvendo processos reprodutivos e resposta imune, indicando a participação desses genes na diferenciação sexual e homeostase de espécimes em cativeiro. Esses dados são úteis para selecionar genes relacionados à determinação do sexo e bem-estar animal em sistemas de criação de Tambaqui.",
-                    link: "https://doi.org/10.1038/s41598-024-53734-5",
-                    author: {
-                        image: "assets/Luan.png",
-                        name: "Luan Rabelo",
-                        role: "Colaborador"
-                    }
-                },
-                {
-                    time: "2024",
-                    title: "DNA barcoding for the assessment of marine and coastal fish diversity from the Coast of Mozambique.",
-                    year: "2024",
-                    description: "As províncias ictiológicas de Moçambique, pontos pouco estudados de diversidade de peixes globais, foram exploradas neste estudo através do DNA barcoding para identificar a fauna de peixes da costa. Foram identificadas **143 espécies**, pertencentes a **104 gêneros**, **59 famílias** e **30 ordens**. A distância K2P das sequências COI dentro das espécies variou de **0,00% a 1,51%**, enquanto as distâncias interespecíficas variaram de **3,64% a 24,49%**. O estudo revelou **15 espécies ameaçadas** segundo a Lista Vermelha da IUCN, com os elasmobrânquios sendo o grupo mais representado. Além disso, descobriu-se **quatro novas espécies** não registradas anteriormente na área, incluindo Boleophthalmus dussumieri, Maculabatis gerrardi, Hippocampus kelloggi e Lethrinus miniatus. Este estudo é o primeiro a usar referências moleculares para explorar a fauna de peixes na costa de Moçambique, indicando que o DNA barcoding é uma técnica confiável para identificar e delinear espécies de peixes nas águas moçambicanas. A biblioteca de DNA barcoding criada será um recurso valioso para avançar no entendimento da diversidade de peixes e orientar iniciativas de conservação futuras.",
-                    link: "https://doi.org/10.1371/journal.pone.0293345",
-                    author: {
-                        image: "assets/Luan.png",
-                        name: "Luan Rabelo",
-                        role: "Colaborador"
-                    }
-                },
-                {
-                    time: "2024",
-                    title: "Comparative mitochondrial genome brings insights to slight variation in gene proportion and large intergenic spacer and phylogenetic relationship of mudskipper species.",
-                    year: "2024",
-                    description: "O genoma mitocondrial de peixes tem sido extensivamente estudado para fins evolutivos e genéticos, e sua estrutura e organização gênica são geralmente conservadoras. Contudo, variações foram observadas em alguns táxons, evidenciando diferenciação no rearranjo gênico. Neste estudo, o mitogenoma completo do peixe terrestre Boleophthalmus dussumieri foi gerado e comparado com outras espécies de peixes Exudercidae. O mitogenoma, circular e com 16.685 pares de bases, contém 13 genes codificadores de proteínas, dois RNAs ribossomais, 22 genes de RNA transportador e uma região de controle, apresentando uma estrutura altamente conservada, como em outros peixes da mesma família. A maioria dos genes codificadores de proteínas mostrou viés de uso de códons semelhante. O comprimento dos genes variou, especialmente para a região de controle, o gene rRNA 12S e o gene ND5. Todas as espécies de Boleophthalmus apresentaram duplicação gênica na região de controle, exceto B. dussumieri, que mostrou um espaçador intergênico longo, especialmente no tRNA-Pro. A duplicação em tandem seguida de perda aleatória e a perda não aleatória em dímeros mitogenômicos são mecanismos propostos para explicar o rearranjo do mitogenoma observado. A análise filogenética suportou a monofilia de todas as espécies de peixes da família e posicionou o clado Periophthalmus como o mais basal entre os peixes terrestres. Esses achados fornecem uma base e trazem insights sobre a variação gênica, rearranjos e replicação, evidenciando a diversidade estrutural do mitogenoma dentro dos peixes da família.",
-                    link: "https://doi.org/10.1038/s41598-024-52979-4",
-                    author: {
-                        image: "assets/Luan.png",
-                        name: "Luan Rabelo",
-                        role: "Colaborador"
-                    }
-                },
-                {
-                    time: "2021",
-                    title: "The role of the chromosomal rearrangements in the evolution and speciation of Elopiformes fishes (Teleostei; Elopomorpha).",
-                    year: "2021",
-                    description: "Os Elopiformes, um dos mais antigos ordens de peixes Teleostei, incluem as famílias Megalopidae e Elopidae. Apesar de sua relevância, faltam dados citogenéticos e moleculares para ambas. Este estudo comparou espécies de Elopiformes para esclarecer a diversificação cromossômica e os processos evolutivos do grupo. Os resultados citogenéticos mostraram que Megalops atlanticus e Elops smithi têm 2n = 50, com diferenças em suas fórmulas cromossômicas. As distribuições de heterocromatina e sequências de DNA repetitivo revelaram características compartilhadas entre Elopiformes e outras linhagens basais de Teleostei. Além disso, sugerem que rearranjos cromossômicos ocorreram nas espécies analisadas. A árvore de espécies indicou que Megalopidae e Elopidae são grupos monofiléticos, mas a divergência genética foi maior para espécies de Megalops do que para Elops. A pequena divergência e distribuição simpátrica das espécies de Elops podem não impedir a hibridização. No entanto, a diferenciação cariotípica pode ser um mecanismo pós-zigótico eficaz para prevenir a hibridização contínua, sendo um fator chave no processo de especiação. Em conclusão, este é o primeiro relatório de espécies de Elopiformes que integra dados moleculares e citogenéticos, ressaltando a importância desses dados para definir melhor as espécies de Elopidae.",
-                    link: "https://doi.org/10.1016/j.jcz.2020.11.003",
-                    author: {
-                        image: "assets/Luan.png",
-                        name: "Luan Rabelo",
-                        role: "Colaborador"
-                    }
-                },
-            ];
-
-
-            function loadTimelinePrimeiro() {
-                const timeline = document.getElementById('timeline-content');
-                publications.forEach((publication) => {
-                    const div = document.createElement('div');
-                    div.className = 'flex flex-col lg:flex-row items-start lg:items-center mb-8';
-
-                    const contentDiv = document.createElement('div');
-                    contentDiv.className = 'flex-grow bg-gray-800 p-5 rounded-lg shadow-lg w-full lg:w-3/4';
-                    contentDiv.innerHTML = `
-            <div class="flex items-center mb-2">
-                <i class="fas fa-file-alt fa-2x text-gray-400 mr-4"></i>
-                <div>
-                    <h3 class="text-xl font-bold text-white">${publication.title}</h3>
-                    <span class="text-gray-400">${publication.year}</span>
-                </div>
-            </div>
-            <p class="mt-2 text-white">${publication.description}</p>
-            <div class="flex items-center mt-4">
-                <img src="${publication.author.image}" alt="Author Image" class="w-12 h-12 rounded-full mr-4">
-                <div>
-                    <p class="text-white font-bold">${publication.author.name}</p>
-                    <p class="text-gray-400">${publication.author.role}</p>
-                </div>
-            </div>
-            <br>
-            <a href="${publication.link}" class="mt-2 iconLink" target="_blank"><i class="fa-solid fa-link"></i> Acesse o artigo completo</a>
-        `;
-
-                    //div.appendChild(timeDiv);
-                    div.appendChild(contentDiv);
-                    timeline.appendChild(div);
-                });
-            }
-
-            function loadTimelineColaboradoro() {
-                const timeline = document.getElementById('timelineColaborador');
-                publicationsSegundo.forEach((publication) => {
-                    const div = document.createElement('div');
-                    div.className = 'flex flex-col lg:flex-row items-start lg:items-center mb-8';
-
-                    const contentDiv = document.createElement('div');
-                    contentDiv.className = 'flex-grow bg-gray-800 p-5 rounded-lg shadow-lg w-full lg:w-3/4';
-                    contentDiv.innerHTML = `
-            <div class="flex items-center mb-2">
-                <i class="fas fa-file-alt fa-2x text-gray-400 mr-4"></i>
-                <div>
-                    <h3 class="text-xl font-bold text-white">${publication.title}</h3>
-                    <span class="text-gray-400">${publication.year}</span>
-                </div>
-            </div>
-            <p class="mt-2 text-white">${publication.description}</p>
-            <div class="flex items-center mt-4">
-                <img src="${publication.author.image}" alt="Author Image" class="w-12 h-12 rounded-full mr-4">
-                <div>
-                    <p class="text-white font-bold">${publication.author.name}</p>
-                    <p class="text-gray-400">${publication.author.role}</p>
-                </div>
-            </div>
-            <br>
-            <a href="${publication.link}" class="mt-2 iconLink" target="_blank"><i class="fa-solid fa-link"></i> Acesse o artigo completo</a>
-        `;
-
-                    //div.appendChild(timeDiv);
-                    div.appendChild(contentDiv);
-                    timeline.appendChild(div);
-                });
-            }
-
-
-
-
-            loadTimelinePrimeiro();
-            loadTimelineColaboradoro();
-
-        });
-    </script>
-
-
-
-
-
-
-
-
-    <h1 class="text-4xl font-bold text-center mb-10 p-5">Portfólio de Figuras</h1>
-
-    <div id="image-gallery" class="masonry mb-20">
-        <!-- Images will be loaded here dynamically -->
-    </div>
-
-
+        <hr class="my-8">
+        <section class="mt-8">
+            <h2 class="text-5xl font-bold text-center mb-8">Portfólio de Ferramentas de Bioinformática</h2>
+            <div id="tools-gallery" class="masonry mx-auto"></div>
+        </section>
+    </main>
 
     <div id="full-screen-container" class="hidden full-screen-image">
         <span class="close" onclick="closeFullScreen()">&times;</span>
@@ -417,59 +166,230 @@
     </div>
 
     <script>
-        const images = {
-            "Fig1.png": "Legenda 1",
-            "Fig2.png": "Legenda 2",
-            "Fig3.png": "Legenda 3",
-            "Fig4.png": "Legenda 4",
-            "Fig5.png": "Legenda 5",
-            "Fig6.png": "Legenda 6",
-            "Fig7.png": "Legenda 7",
-            "Fig8.png": "Legenda 8",
-            "Fig9.png": "Legenda 9",
-            "Fig10.png": "Legenda 10",
-            "Fig11.png": "Legenda 11",
-            "Fig12.png": "Legenda 12",
-            "Fig13.png": "Legenda 13",
-            "Fig14.png": "Legenda 14",
-            "Fig15.png": "Legenda 15",
-            "Fig16.png": "Legenda 16",
-            "Fig17.png": "Legenda 17",
-            "Fig18.png": "Legenda 18",
-            "Fig19.png": "Legenda 19",
-            "Fig20.png": "Legenda 20",
-            "Fig21.png": "Legenda 21",
-            "Fig22.png": "Legenda 22",
-            "Fig23.png": "Legenda 23",
-            "Fig24.png": "Legenda 24",
-            "Fig25.png": "Legenda 25",
-        };
+        const images = [
+            { src: "Fig1.png", caption: "Dados de 2024 revelam alta contaminação alimentar nas Américas, Europa e Pacífico Ocidental, liderados por Canadá, Alemanha e Brasil." },
+            { src: "Fig2.png", caption: "Dados de 2024 sobre a Política Municipal de Saneamento Básico em Municípios da Zona Costeira Paraense"},
+            { src: "Fig3.png", caption: "Comparação antes e depois da padronização SyBA para sete gêneros de bactérias." },
+            { src: "Fig4.png", caption: "Fluxo de trabalho do SynGenes: a) Extração de nomes de genes. b) Checar a existência dos nomes no banco de dados. c) Inclusão de novos nomes no banco de dados." },
+            { src: "Fig5.png", caption: "WorkFlow do SynGenes" },
+            { src: "Fig6.png", caption: "WorkFlow SyBA" },
+            { src: "Fig7.png", caption: "Árvore Filogenética de Barcoding" },
+            { src: "Fig8.png", caption: "Contagem de Aminoácidos da família Serranidae" },
+            { src: "Fig9.png", caption: "Diagrama de um Genoma Mitocondrial de um <i>C. goeldii</i>" },
+            { src: "Fig10.png", caption: "Ocorrências de Espécies com o status LC no Brasil" },
+            { src: "Fig11.png", caption: "Ocorrências de Espécies com o status NT no Brasil" },
+            { src: "Fig12.png", caption: "Contagem de Espécies com o status LC na Ámerica do Sul" },
+            { src: "Fig13.png", caption: "Reads mapeadas para a montagem de genomas mitocondriais" },
+            { src: "Fig14.png", caption: "Mapeamento da Cobertura e Profundidade das reads com um genoma montado" },
+            { src: "Fig15.png", caption: "Diagrama de um Genoma Mitocondrial de um mudskipper" },
+            { src: "Fig16.png", caption: "Tempo Computacional da ferramenta SyBA" },
+            { src: "Fig17.png", caption: "Genômica Comparativa de mudskippers" },
+            { src: "Fig18.png", caption: "Genômica Comparativa de Serranidae" },
+            { src: "Fig19.png", caption: "Genômica Comparativa de Lutjanus" },
+            { src: "Fig20.png", caption: "Tempo de Processamento da ferramenta dataFishing" },
+            { src: "Fig21.png", caption: "RSCU de Genomas de Serranidae montados" },
+            { src: "Fig22.png", caption: "Ocorrências de Espécies por Bioma Brasileiro" },
+            { src: "Fig23.png", caption: "Fluxograma da Ferramenta PUMAS" },
+            { src: "Fig24.png", caption: "Fluxograma do dataFishing" },
+            { src: "Fig25.png", caption: "Banner do dataFishing, apresentado no Simpósio de Bioinformática em 2024"},
+            { src: "Fig26.png", caption: "Banner da ferramenta SynGenes, apresentado no Simpósio de Bioinformática em 2024" },
+            { src: "Fig27.png", caption: "Banner de Genômica Comparativa da família Carangidae, apresentado no Simpósio de Bioinformática em 2024" },
+            { src: "Fig28.png", caption: "Casos de Raiva e Esquitossomose no Pará"},
+            { src: "Fig29.png", caption: "Análise casos de COVID-19 no Pará por Região"},
+            { src: "Fig30.png", caption: "Análise DL50 de Espécies de Camarões"},
+            { src: "Fig31.png", caption: "Análise do Índice de Desenvolvimento Humano no Pará por Município"},
+            { src: "Fig32.png", caption: "Casos de Raiva no Pará por Município"},
+            { src: "Fig33.png", caption: "Análise Comparativa do SyBA"},
+            { src: "Fig34.png", caption: "Genômica Comparativa de Carangidae"},
+            { src: "Fig35.png", caption: "Tempo de Processamento de Genomas"},
+            { src: "Fig36.png", caption: "Mapeamento de Mitogenomas de Sapos"},
+            { src: "Fig37.png", caption: "Casos de Esquitossomose no Pará"},
+            { src: "Fig38.png", caption: "Comparação Base de dados do SynGenes"},
+            { src: "Fig39.png", caption: "Ocorrências de Espécies com o status CR no Brasil"},
+            { src: "Fig40.png", caption: "Mapa com Rios"},
+        ];
 
-
+        const tools = [
+            {
+                name: "ForAlexa, an online tool for the rapid development of artificial intelligence skills for the teaching of evolutionary biology using Amazon’s Alexa", 
+                link: "https://levo.ufpa.br/ForAlexa/", 
+                doi: "10.1186/s12052-022-00169-z", 
+                logo: "Tools/ForAlexa.png", 
+                github: "https://github.com/luanrabelo/ForAlexa" 
+            },
+            {
+                name: "SynGenes: a Python class for standardizing nomenclatures of mitochondrial and chloroplast genes and a web form for enhancing searches for evolutionary analyses", 
+                link: "https://luanrabelo.github.io/SynGenes/", 
+                doi: "10.1186/s12859-024-05781-y", 
+                logo: "Tools/SynGenes.png", 
+                github: "https://github.com/luanrabelo/SynGenes"
+            },
+            {
+                name: "SyBA: a tool and database for standardizing gene names from the main bacterial pathogens causing food contamination", 
+                link: "https://luanrabelo.github.io/SyBA/", 
+                doi: "", 
+                logo: "Tools/SyBA.png", 
+                github: "https://github.com/luanrabelo/SyBA" 
+            },
+            {
+                name: "dataFishing: An Efficient Python Tool and User-Friendly Web-Form for Mining Genomic, Taxonomic, and Biodiversity Data", 
+                link: "https://luanrabelo.github.io/dataFishing/", 
+                doi: "", 
+                logo: "Tools/dataFishing.png", 
+                github: "https://github.com/luanrabelo/dataFishing"
+            },
+            {
+                name: "PUMAS", 
+                link: "https://luanrabelo.github.io/PUMAS", 
+                doi: "", 
+                logo: "Tools/PUMAS.png", 
+                github: "https://github.com/luanrabelo/PUMAS" 
+            },
+            {
+                name: "MICOS", 
+                link: "https://luanrabelo.github.io/MICOS", 
+                doi: "", 
+                logo: "Tools/MICOS.png", 
+                github: "https://github.com/luanrabelo/MICOS" 
+            }
+        ];
 
         const gallery = document.getElementById('image-gallery');
-
+        const toolsGallery = document.getElementById('tools-gallery');
         const fullScreenContainer = document.getElementById('full-screen-container');
         const fullScreenImage = document.getElementById('full-screen-image');
+        const loadMoreButton = document.getElementById('load-more');
 
-        function loadImages(startIndex, endIndex) {
-            const entries = Object.entries(images).slice(startIndex, endIndex);
-            entries.forEach(([src]) => {
+        function getRandomImages(count) {
+            const selectedImages = [];
+            const usedIndices = new Set();
+
+            while (selectedImages.length < count && usedIndices.size < images.length) {
+                const randomIndex = Math.floor(Math.random() * images.length);
+                if (!usedIndices.has(randomIndex)) {
+                    usedIndices.add(randomIndex);
+                    selectedImages.push(images[randomIndex]);
+                }
+            }
+
+            return selectedImages;
+        }
+
+        function loadImages(imageList) {
+            gallery.innerHTML = ''; // Clear existing images
+            imageList.forEach(({ src, caption }) => {
                 const div = document.createElement('div');
-                div.className = 'image-container masonry-item object-fill w-fit cursor-pointer';
+                div.className = 'image-container masonry-item cursor-pointer';
+
+                const imgWrapper = document.createElement('div');
+                imgWrapper.className = 'relative overflow-hidden';
+                imgWrapper.style.paddingBottom = '56.25%'; // 16:9 aspect ratio
+                imgWrapper.style.background = 'white';
 
                 const img = document.createElement('img');
                 img.src = `assets/${src}`;
-                img.alt = '';
-                img.className = 'h-auto max-w-full rounded-lg';
+                img.alt = caption;
+                img.className = 'absolute top-0 left-0 w-full h-full object-cover';
+
+                const spinner = document.createElement('div');
+                spinner.className = 'loading-spinner';
+
+                const captionDiv = document.createElement('div');
+                captionDiv.className = 'caption';
+                captionDiv.innerText = caption;
+
+                img.onload = () => {
+                    spinner.style.display = 'none';
+                };
+
                 img.onclick = () => showFullScreen(`assets/${src}`);
 
-                div.appendChild(img);
+                imgWrapper.appendChild(spinner);
+                imgWrapper.appendChild(img);
+                div.appendChild(imgWrapper);
+                div.appendChild(captionDiv);
                 gallery.appendChild(div);
+
+                // Animation for the image
+                img.style.animation = 'moveUpDown 5s infinite alternate';
+                const keyframes = `
+                    @keyframes moveUpDown {
+                        0% { transform: translateY(0); }
+                        100% { transform: translateY(-10%); }
+                    }
+                `;
+                const styleSheet = document.createElement('style');
+                styleSheet.type = 'text/css';
+                styleSheet.innerText = keyframes;
+                document.head.appendChild(styleSheet);
             });
         }
 
+        function loadTools(toolsList, toolsPerRow) {
+            //const toolCardWidth = `calc(${100 / toolsPerRow}% - 1.5rem)`;
+            toolsGallery.innerHTML = ''; // Clear existing tools
+            toolsList.forEach(tool => {
+                const toolCard = document.createElement('div');
+                toolCard.className = 'tool-card image-container masonry-item cursor-pointer';
+                //toolCard.style.width = toolCardWidth;
 
+                const logoWrapper = document.createElement('div');
+                logoWrapper.className = 'relative overflow-hidden';
+                logoWrapper.style.paddingBottom = '56.25%'; // 16:9 aspect ratio
+                if (tool.name === 'ForAlexa, an online tool for the rapid development of artificial intelligence skills for the teaching of evolutionary biology using Amazon’s Alexa') {
+                    logoWrapper.style.background = '#202020';    
+                } else {
+                    logoWrapper.style.background = 'white';
+                }
+
+                const logo = document.createElement('img');
+                logo.src = `assets/${tool.logo}`;
+                logo.alt = `${tool.name} logo`;
+                logo.className = 'absolute top-0 left-0 w-full h-full object-cover';
+
+                logoWrapper.appendChild(logo);
+
+                const toolInfo = document.createElement('div');
+                toolInfo.className = 'tool-info';
+
+                const toolName = document.createElement('div');
+                toolName.className = 'tool-name';
+                toolName.innerText = tool.name;
+
+                const toolLinks = document.createElement('div');
+                toolLinks.className = 'tool-links text-xl';
+
+                const link = document.createElement('a');
+                link.className = 'text-black hover:text-blue-600 transition-colors duration-300';
+                link.href = tool.link;
+                link.target = '_blank';
+                link.innerHTML = '<i class="fa-solid fa-globe"></i> Website';
+
+                const githubLink = document.createElement('a');
+                githubLink.className = 'text-black hover:text-blue-600 transition-colors duration-300';
+                githubLink.href = tool.github;
+                githubLink.target = '_blank';
+                githubLink.innerHTML = '<i class="fa-brands fa-github"></i> GitHub';
+
+                toolLinks.appendChild(link);
+                toolLinks.appendChild(githubLink);
+
+                if (tool.doi) {
+                    const doiLink = document.createElement('a');
+                    doiLink.className = 'text-black hover:text-blue-600 transition-colors duration-300';
+                    doiLink.href = `https://doi.org/${tool.doi}`;
+                    doiLink.target = '_blank';
+                    doiLink.innerHTML = '<i class="fa-solid fa-file"></i> DOI';
+                    toolLinks.appendChild(doiLink);
+                }
+
+                toolInfo.appendChild(toolName);
+                toolInfo.appendChild(toolLinks);
+                toolCard.appendChild(logoWrapper);
+                toolCard.appendChild(toolInfo);
+                toolsGallery.appendChild(toolCard);
+            });
+        }
 
         function showFullScreen(src) {
             fullScreenImage.src = src;
@@ -480,22 +400,20 @@
             fullScreenContainer.classList.add('hidden');
         }
 
-        // Initial load
-        loadImages(0, 21);
-
-
-        // Infinite scroll
-        window.addEventListener('scroll', () => {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                const currentLength = gallery.children.length;
-                if (currentLength < Object.keys(images).length) {
-                    console.log('Loading more images...');
-                    loadImages(currentLength, currentLength + 3);
-                }
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeFullScreen();
             }
         });
+
+        loadMoreButton.addEventListener('click', () => {
+            const newImages = getRandomImages(12);
+            loadImages(newImages);
+        });
+
+        // Initial load
+        loadImages(getRandomImages(12));
+        loadTools(tools, 3); // Change the number to set how many tools per row
     </script>
-
 </body>
-
 </html>
