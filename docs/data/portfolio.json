@@ -3,7 +3,7 @@
   "profile": {
     "name": "Luan Pinto Rabelo",
     "shortName": "Luan Rabelo",
-    "role": "Pesquisador em Bioinformática · Instituto Tecnológico Vale (ITV)",
+    "role": "Pesquisador em Bioinformática · Instituto Tecnológico Vale",
     "bio": "Doutor em Biologia Ambiental pela Universidade Federal do Pará e pesquisador em Bioinformática no Instituto Tecnológico Vale. Desenvolvo ferramentas para conectar dados, biodiversidade e pessoas.",
     "github": "https://github.com/luanrabelo/",
     "orcid": "https://orcid.org/0000-0002-1223-8943",
@@ -124,9 +124,9 @@
     ],
     "intro": "Desenvolvo ferramentas para conectar dados, biodiversidade e pessoas.",
     "photoCrop": {
-      "zoom": 1.25,
-      "x": 0.5,
-      "y": 0.33
+      "zoom": 1.38,
+      "x": 0.51,
+      "y": 0.4
     },
     "organelle": {
       "name": "Genoma mitocondrial",
@@ -407,8 +407,14 @@
       "controlRegion": {
         "name": "Região controle",
         "segments": [
-          [16024, 16569],
-          [0, 576]
+          [
+            16024,
+            16569
+          ],
+          [
+            0,
+            576
+          ]
         ]
       },
       "repeats": [
@@ -422,9 +428,9 @@
         }
       ],
       "animation": {
-        "durationSeconds": 5,
-        "readTravel": 500,
-        "assemblyTravel": 200
+        "durationSeconds": 6.5,
+        "readTravel": 110,
+        "assemblyTravel": 95
       }
     }
   },
@@ -435,7 +441,7 @@
       "institution": "Universidade Federal do Pará",
       "period": "2011 a 2015",
       "color": "#9a692f",
-      "degree": "Licenciatura em Ciências Naturais",
+      "degree": "Ciências Naturais",
       "description": "Software para elaboração e avaliação de projetos de piscicultura, com aplicação na profissionalização da atividade.",
       "zoneLabel": "Graduação",
       "startYear": 2011,
@@ -490,7 +496,11 @@
       "logo": "assets/provided-logos/SynGenes.png",
       "icon": "Dna",
       "description": "Padronização de nomes de genes mitocondriais e cloroplastidiais, com uma classe Python e formulário para buscas.",
-      "tags": ["Python", "Nomenclatura", "Organelas"],
+      "tags": [
+        "Python",
+        "Nomenclatura",
+        "Organelas"
+      ],
       "repo": "https://github.com/luanrabelo/SynGenes",
       "site": "https://luanrabelo.github.io/SynGenes/",
       "publication": "pub-syngenes",
@@ -508,7 +518,11 @@
       "logo": "assets/datafishing.png",
       "icon": "Database",
       "description": "Mineração de sequências, taxonomia e biodiversidade, conectando bases genômicas e registros de espécies.",
-      "tags": ["Python", "Bases de dados", "Biodiversidade"],
+      "tags": [
+        "Python",
+        "Bases de dados",
+        "Biodiversidade"
+      ],
       "repo": "https://github.com/luanrabelo/dataFishing",
       "site": "https://luanrabelo.github.io/dataFishing/",
       "publication": "pub-datafishing",
@@ -525,7 +539,11 @@
       "category": "Genômica comparativa",
       "icon": "Workflow",
       "description": "Pipeline de análise comparativa de genomas organelares, com extração de dados, análises evolutivas e relatórios.",
-      "tags": ["Python", "Filogenia", "Relatórios"],
+      "tags": [
+        "Python",
+        "Filogenia",
+        "Relatórios"
+      ],
       "repo": "https://github.com/itvgenomics/pipeco",
       "status": "Em desenvolvimento",
       "dateNote": "Repositório do ITV criado em 2026, com contribuições de luanrabelo.",
@@ -542,7 +560,11 @@
       "category": "Transcriptômica",
       "icon": "Code2",
       "description": "Ferramenta para anotação de transcriptomas e análise de sequências, desenvolvida no mestrado em Zoologia.",
-      "tags": ["Transcriptomas", "Anotação", "Mestrado"],
+      "tags": [
+        "Transcriptomas",
+        "Anotação",
+        "Mestrado"
+      ],
       "reference": "https://www.sbg.org.br/sites/default/files/luan_pinto.pdf",
       "dateNote": "Apresentado em 2019; tema da dissertação concluída em 2020.",
       "released": true,
@@ -559,7 +581,11 @@
       "logo": "assets/provided-logos/PUMAS.png",
       "icon": "Layers",
       "description": "Visualização da ordem de genes em genomas mitocondriais e cloroplastidiais. Integra a tese de doutorado.",
-      "tags": ["JavaScript", "Ordem gênica", "Visualização"],
+      "tags": [
+        "JavaScript",
+        "Ordem gênica",
+        "Visualização"
+      ],
       "repo": "https://github.com/luanrabelo/PUMAS",
       "site": "https://luanrabelo.github.io/PUMAS/",
       "dateNote": "Ano do primeiro registro do repositório. Ferramenta documentada na tese.",
@@ -575,7 +601,11 @@
       "category": "Acessibilidade",
       "icon": "Palette",
       "description": "Geração de paletas para visualizações científicas com atenção à acessibilidade para pessoas com daltonismo.",
-      "tags": ["Python", "Cores", "Acessibilidade"],
+      "tags": [
+        "Python",
+        "Cores",
+        "Acessibilidade"
+      ],
       "repo": "https://github.com/luanrabelo/InclusivePalette",
       "dateNote": "Programa registrado no currículo em 2023.",
       "released": true,
@@ -592,7 +622,11 @@
       "darkLogo": true,
       "icon": "Mic",
       "description": "Plataforma para criar skills da Alexa e ensinar biologia evolutiva com recursos de inteligência artificial.",
-      "tags": ["Educação", "IA", "Acessibilidade"],
+      "tags": [
+        "Educação",
+        "IA",
+        "Acessibilidade"
+      ],
       "repo": "https://github.com/luanrabelo/ForAlexa",
       "site": "https://levo.ufpa.br/ForAlexa/",
       "publication": "pub-foralexa",
@@ -610,7 +644,11 @@
       "logo": "assets/provided-logos/SyBA.png",
       "icon": "Dna",
       "description": "Ferramenta e base de sinônimos para padronização de nomes de genes bacterianos, com classe Python e formulário web.",
-      "tags": ["Python", "Bactérias", "Nomenclatura"],
+      "tags": [
+        "Python",
+        "Bactérias",
+        "Nomenclatura"
+      ],
       "repo": "https://github.com/luanrabelo/SyBA",
       "site": "https://luanrabelo.github.io/SyBA/",
       "dateNote": "Repositório de 2024 e capítulo da tese. O manuscrito é apresentado na tese como não publicado.",
@@ -626,7 +664,11 @@
       "category": "Repetições",
       "icon": "Layers",
       "description": "Análise de sequências repetitivas em genomas mitocondriais com uma ferramenta baseada em JavaScript.",
-      "tags": ["JavaScript", "Repetições", "Mitogenomas"],
+      "tags": [
+        "JavaScript",
+        "Repetições",
+        "Mitogenomas"
+      ],
       "repo": "https://github.com/luanrabelo/M-TeReSA",
       "dateNote": "Ano do primeiro registro público do repositório.",
       "released": true,
@@ -642,7 +684,11 @@
       "category": "Filogenia",
       "icon": "GitBranch",
       "description": "Desenvolvimento e manutenção de ferramentas para extrair, alinhar e concatenar marcadores para inferência filogenética.",
-      "tags": ["Python", "Alinhamento", "Filogenia"],
+      "tags": [
+        "Python",
+        "Alinhamento",
+        "Filogenia"
+      ],
       "repo": "https://github.com/itvgenomics/splace",
       "status": "Desenvolvimento em equipe",
       "dateNote": "Repositório do ITV de 2026, com Luan Rabelo entre os colaboradores.",
@@ -660,7 +706,11 @@
       "category": "Pipelines",
       "icon": "Workflow",
       "description": "Workflow em Snakemake para montagem de genomas mitocondriais a partir de dados de RNA-seq.",
-      "tags": ["Snakemake", "RNA-seq", "Montagem"],
+      "tags": [
+        "Snakemake",
+        "RNA-seq",
+        "Montagem"
+      ],
       "repo": "https://github.com/luanrabelo/snakeseek",
       "dateNote": "O repositório snakeseek descreve o workflow SnakeGARD; primeiro registro em 2025.",
       "released": true,
@@ -676,7 +726,11 @@
       "category": "Aquicultura",
       "icon": "ChartNoAxesCombined",
       "description": "Software para elaboração e avaliação econômica de projetos de piscicultura, associado à graduação e à extensão.",
-      "tags": ["PHP", "MySQL", "Piscicultura"],
+      "tags": [
+        "PHP",
+        "MySQL",
+        "Piscicultura"
+      ],
       "publication": "pub-seapis",
       "reference": "http://www.iea.sp.gov.br/ftpiea/publicacoes/ie/2015/tec05-0815.pdf",
       "dateNote": "Trabalho de graduação de 2015 e projeto de extensão de 2015 a 2016.",
@@ -948,7 +1002,11 @@
       "repo": "https://github.com/luanrabelo/ABC_Amazonico",
       "url": "https://www.amazon.com.br/dp/B0DPXC3HDX/",
       "credits": "Idealização: Ingrid Clairley. Desenvolvimento: Luan Rabelo. Design: Louise Artes.",
-      "tags": ["Alexa", "Amazônia", "Educação"]
+      "tags": [
+        "Alexa",
+        "Amazônia",
+        "Educação"
+      ]
     },
     {
       "id": "pira-esconde-no-mangue",
@@ -980,7 +1038,11 @@
       "description": "Inteligência artificial para criar experiências de ensino. Palestra sobre educação inclusiva registrada no currículo, com apresentação disponível.",
       "url": "https://www.youtube.com/watch?v=5LJNL8mDSok",
       "repo": "https://github.com/luanrabelo/ForAlexa",
-      "tags": ["Biologia evolutiva", "IA", "Inclusão"]
+      "tags": [
+        "Biologia evolutiva",
+        "IA",
+        "Inclusão"
+      ]
     },
     {
       "id": "bioviz-project",
@@ -991,7 +1053,11 @@
       "description": "Mapas, diagramas, gráficos e ilustrações científicas com atenção à acessibilidade e à comunicação do conhecimento.",
       "repo": "https://github.com/luanrabelo/bioViz",
       "gallery": true,
-      "tags": ["Ilustração", "Visualização", "Acessibilidade"]
+      "tags": [
+        "Ilustração",
+        "Visualização",
+        "Acessibilidade"
+      ]
     },
     {
       "id": "science-schools",
@@ -1001,7 +1067,11 @@
       "category": "Extensão universitária",
       "icon": "GraduationCap",
       "description": "Participação no projeto de ensino de ciências em escolas de Bragança, conectando experimentação, prática docente e conhecimento acadêmico.",
-      "tags": ["UFPA", "Experimentação", "Educação básica"],
+      "tags": [
+        "UFPA",
+        "Experimentação",
+        "Educação básica"
+      ],
       "reference": "https://lattes.cnpq.br/9867825327586576",
       "image": "assets/map-one.png",
       "imageNote": "Ilustração do acervo bioViz",
@@ -1014,7 +1084,11 @@
       "category": "Divulgação científica",
       "icon": "Mic",
       "description": "Participação no Pint of Science Brasil com o tema inteligência artificial no ensino de biologia e acessibilidade para pessoas com deficiência visual.",
-      "tags": ["Pint of Science", "Biologia", "Acessibilidade"],
+      "tags": [
+        "Pint of Science",
+        "Biologia",
+        "Acessibilidade"
+      ],
       "reference": "https://lattes.cnpq.br/9867825327586576",
       "image": "assets/phylogeny-one.png",
       "imageNote": "Ilustração do acervo bioViz",
@@ -1662,7 +1736,12 @@
         "phd": 78,
         "itv": 98
       },
-      "radii": [0.19, 0.28, 0.365, 0.45],
+      "radii": [
+        0.19,
+        0.28,
+        0.365,
+        0.45
+      ],
       "title": "Conhecimento em órbita",
       "hint": "Selecione um planeta. Passe o cursor para pausar as órbitas.",
       "abstractLabel": "Abstract · resumo em português"
