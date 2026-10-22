@@ -1550,11 +1550,33 @@
       "enabled": true
     },
     {
+      "id": "trajetoria",
+      "name": "Trajetória",
+      "type": "career",
+      "file": "career.vcf",
+      "locus": "p34.2",
+      "eyebrow": "A CIÊNCIA COMO CAMINHO",
+      "title": "Da UFPA ao ITV.",
+      "description": "Formação, pesquisa e novas perguntas. Cada etapa amplia o que vem depois.",
+      "enabled": true
+    },
+    {
+      "id": "universo",
+      "name": "Universo",
+      "type": "universe",
+      "file": "research.bib",
+      "locus": "p32.1",
+      "eyebrow": "UMA TRAJETÓRIA, MUITAS CONEXÕES",
+      "title": "Meu universo de pesquisa.",
+      "description": "Graduação, mestrado, doutorado e ITV. Ferramentas e publicações conectadas pela pesquisa.",
+      "enabled": true
+    },
+    {
       "id": "pesquisa-demo",
       "name": "Pesquisa em movimento",
       "type": "research",
       "file": "workflow.py",
-      "locus": "p34.2",
+      "locus": "p21",
       "eyebrow": "PESQUISA EM MOVIMENTO",
       "title": "Da ideia à descoberta.",
       "description": "Clique em uma área para explorar. Retome o tour para acompanhar todas em sequência.",
@@ -1565,21 +1587,10 @@
       "name": "Ferramentas",
       "type": "tools",
       "file": "tools.py",
-      "locus": "p32.1",
+      "locus": "q12",
       "eyebrow": "DO PROBLEMA BIOLÓGICO AO CÓDIGO",
       "title": "Ferramentas que\nabrem caminhos.",
       "description": "Software para explorar genomas, conectar dados e compartilhar ciência.",
-      "enabled": true
-    },
-    {
-      "id": "universo",
-      "name": "Universo",
-      "type": "universe",
-      "file": "research.bib",
-      "locus": "p21",
-      "eyebrow": "UMA TRAJETÓRIA, MUITAS CONEXÕES",
-      "title": "Meu universo de pesquisa.",
-      "description": "Graduação, mestrado, doutorado e ITV. Ferramentas e publicações conectadas pela pesquisa.",
       "enabled": true
     },
     {
@@ -1587,7 +1598,7 @@
       "name": "Publicações",
       "type": "publications",
       "file": "publications.bib",
-      "locus": "q12",
+      "locus": "q21",
       "eyebrow": "CIÊNCIA PUBLICADA",
       "title": "Biblioteca de publicações",
       "description": "Uma linha do tempo de perguntas, métodos e descobertas.",
@@ -1598,7 +1609,7 @@
       "name": "Divulgação",
       "type": "projects",
       "file": "outreach.md",
-      "locus": "q21",
+      "locus": "q31",
       "eyebrow": "CIÊNCIA QUE ENCONTRA AS PESSOAS",
       "title": "Conhecimento\nfora das fronteiras.",
       "description": "Educação, inclusão e divulgação científica. Projetos que conectam tecnologia à cultura e à biodiversidade.",
@@ -1609,21 +1620,10 @@
       "name": "Ilustrações",
       "type": "gallery",
       "file": "bioviz.svg",
-      "locus": "q31",
+      "locus": "q42",
       "eyebrow": "ILUSTRAÇÃO E COMUNICAÇÃO CIENTÍFICA",
       "title": "A ciência\ntambém se vê.",
       "description": "Mapas, genomas e relações evolutivas. Ilustrações do meu acervo bioViz.",
-      "enabled": true
-    },
-    {
-      "id": "trajetoria",
-      "name": "Trajetória",
-      "type": "career",
-      "file": "career.vcf",
-      "locus": "q42",
-      "eyebrow": "A CIÊNCIA COMO CAMINHO",
-      "title": "Da UFPA ao ITV.",
-      "description": "Formação, pesquisa e novas perguntas. Cada etapa amplia o que vem depois.",
       "enabled": true
     }
   ],
@@ -1726,7 +1726,12 @@
           "title": "Conhecimento que chega às pessoas.",
           "description": "Tecnologia, educação e linguagem acessível aproximam a ciência de diferentes públicos."
         }
-      ]
+      ],
+      "parallax": true,
+      "wheelNavigation": true,
+      "scrubSeconds": 0.65,
+      "scrollLengthRatio": 1.1,
+      "depthDwellRatio": 0.72
     },
     "universe": {
       "defaultKind": "tool",
@@ -1744,7 +1749,10 @@
       ],
       "title": "Conhecimento em órbita",
       "hint": "Selecione um planeta. Passe o cursor para pausar as órbitas.",
-      "abstractLabel": "Abstract · resumo em português"
+      "abstractLabel": "Abstract · resumo em português",
+      "bandWidth": 54,
+      "fillZones": true,
+      "showContext": true
     },
     "gallery": {
       "rotationEnabled": true,
@@ -1754,7 +1762,8 @@
       "credit": "Luan Rabelo / bioViz",
       "license": "Imagens fornecidas para o portfólio · arquivos originais disponíveis",
       "thumbnailFit": "cover",
-      "thumbnailPosition": "50% 50%"
+      "thumbnailPosition": "50% 50%",
+      "view": "grid"
     },
     "career": {
       "thesisTitle": "Pesquisa também precisa ser acessível.",
